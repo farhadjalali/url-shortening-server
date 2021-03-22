@@ -1,0 +1,5 @@
+type Link {
+	id: Int!
+	url: String!
+	hash: String!
+}

@@ -1,0 +1,3 @@
+type Mutation {
+	shortenUrl(longUrl: String!): Link
+}

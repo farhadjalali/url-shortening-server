@@ -1,0 +1,14 @@
+.eslintrc.json
+node_modules
+/dist
+coverage/
+*.map
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.iml
+*.sw?
+.env

@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ES2017",
+		"noImplicitAny": false,
+		"moduleResolution": "node",
+		"removeComments": false,
+		"preserveConstEnums": true,
+		"resolveJsonModule": true,
+		"baseUrl": "src",
+		"sourceMap": true,
+		"esModuleInterop": true
+	},
+	"baseUrl": "src",
+	"include": [
+		"src/*.ts",
+		"index.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"dist"
+	]
+}
