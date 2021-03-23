@@ -19,7 +19,7 @@ function toErrorResponse(err) {
         else if (typeof err === 'number') {
             return new ErrorResponse(err, StatusCode.getStatusText(err));
         }
-        else {
+        else if (typeof err === 'string') {
             return new ErrorResponse(StatusCode.INTERNAL_SERVER_ERROR, err);
         }
     }

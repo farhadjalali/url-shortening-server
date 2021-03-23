@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const error_response_1 = require("../utils/error-response");
 const StatusCode = require("http-status-codes");
-async function middlewareError(err, req, res, next) {
+function middlewareError(err, req, res, next) {
     if (!err)
         return next();
     const er = error_response_1.toErrorResponse(err); // It may be ErrorObject or other error types

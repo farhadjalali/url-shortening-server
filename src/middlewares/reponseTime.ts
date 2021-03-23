@@ -1,6 +1,8 @@
 import {logger} from "../utils/logger";
+import express = require('express');
+import {IExpressRequest} from "../types";
 
-export default function logResponseTime(req, res, next): void {
+export default function logResponseTime(req: IExpressRequest, res: express.Response, next: () => void): void {
 	const startHrTime = process.hrtime();
 
 	res.on('finish', () => {

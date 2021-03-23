@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Link = exports.dbConfig = void 0;
-var sequelize_1 = require("sequelize");
-var link_model_1 = require("./link-model");
+const sequelize_1 = require("sequelize");
+const link_model_1 = require("./link-model");
 exports.dbConfig = new sequelize_1.Sequelize(process.env.DB_CONNECTION, {
     pool: {
         min: 0,
@@ -12,3 +12,4 @@ exports.dbConfig = new sequelize_1.Sequelize(process.env.DB_CONNECTION, {
     }
 });
 exports.Link = link_model_1.linkFactory(exports.dbConfig);
+//# sourceMappingURL=index.js.map

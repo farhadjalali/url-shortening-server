@@ -11,4 +11,3 @@ coverage/
 *.sln
 *.iml
 *.sw?
-.env

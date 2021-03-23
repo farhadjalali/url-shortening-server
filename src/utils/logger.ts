@@ -1,8 +1,8 @@
 import winston = require('winston')
 import {Constants} from "../types"
 import path from "path"
-import env from "dotenv";
 import moment = require('moment')
+import env from "dotenv";
 
 env.config()
 

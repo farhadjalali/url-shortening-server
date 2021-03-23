@@ -1,6 +1,7 @@
 import {ILink, Link} from "../../models"
 import {generateHash} from "../../utils"
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function shortenUrl(_: unknown, {longUrl}): Promise<ILink> {
 	const link = <ILink>{
 		longUrl: longUrl

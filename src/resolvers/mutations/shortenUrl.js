@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.shortenUrl = void 0;
 const models_1 = require("../../models");
 const utils_1 = require("../../utils");
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 async function shortenUrl(_, { longUrl }) {
     const link = {
         longUrl: longUrl

@@ -7,8 +7,8 @@ exports.logger = void 0;
 const winston = require("winston");
 const types_1 = require("../types");
 const path_1 = __importDefault(require("path"));
-const dotenv_1 = __importDefault(require("dotenv"));
 const moment = require("moment");
+const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const custom = {
     levels: {

@@ -1,7 +1,9 @@
 import {toErrorResponse} from "../utils/error-response";
+import express = require('express');
 import StatusCode = require("http-status-codes")
+import {IExpressRequest} from "../types";
 
-export default async function middlewareError(err, req, res, next) {
+export default function middlewareError(err: unknown, req: IExpressRequest, res: express.Response, next: () => void): void {
 	if (!err) return next()
 	const er = toErrorResponse(err) // It may be ErrorObject or other error types
 
