@@ -1,6 +1,5 @@
 import {Sequelize} from "sequelize"
 import {linkFactory} from "./link-model"
-
 export {ILink} from "./link-model"
 
 export const dbConfig = new Sequelize(process.env.DB_CONNECTION, {

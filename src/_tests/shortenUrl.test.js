@@ -37,20 +37,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var request = require("supertest");
+var env = require("dotenv");
+env.config();
 var express = require("express");
 var express_graphql_1 = require("express-graphql");
-var graphql_1 = require("graphql");
 var schema_1 = require("../schema");
-test('createAuthor mutation', function () { return __awaiter(void 0, void 0, void 0, function () {
-    var app, query, response;
+var graphql_tools_1 = require("graphql-tools");
+var resolvers_1 = require("../resolvers");
+var models_1 = require("../models");
+var graphqlSchema = graphql_tools_1.makeExecutableSchema({ typeDefs: schema_1.default, resolvers: resolvers_1.default });
+test('shortenUrl mutation', function () { return __awaiter(void 0, void 0, void 0, function () {
+    var app, query, response, data, link;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 app = express();
                 app.use('/graphql', express_graphql_1.graphqlHTTP({
-                    schema: graphql_1.buildSchema(schema_1.default)
+                    schema: graphqlSchema,
                 }));
-                query = "\n    mutation {\n      shortenUrl(input: {\n        longUrl: \"http://sample.com/address\"\n      }) {\n\t\tlongUrl\n\t\turl\n      }\n    }\n  ";
+                query = "\n    mutation {\n  \t\tshortenUrl(longUrl:\"http://sample.com/address\"){\n    \t\tlongUrl\n    \t\turl\n  \t\t}\n\t}\n  ";
                 return [4 /*yield*/, request(app)
                         .post('/graphql')
                         .type('json')
@@ -58,7 +63,15 @@ test('createAuthor mutation', function () { return __awaiter(void 0, void 0, voi
             case 1:
                 response = _a.sent();
                 expect(response.statusCode).toEqual(200);
-                console.log('response', response);
+                data = JSON.parse(response.text).data;
+                link = data.shortenUrl;
+                expect(link.longUrl).toEqual('http://sample.com/address');
+                expect(link.url).toMatch(/https:\/\/wor.ks\/\w+/);
+                // Remove the create link from database
+                return [4 /*yield*/, models_1.Link.destroy({ where: { url: link.url } })];
+            case 2:
+                // Remove the create link from database
+                _a.sent();
                 return [2 /*return*/];
         }
     });
