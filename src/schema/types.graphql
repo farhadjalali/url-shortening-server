@@ -1,5 +1,4 @@
 type Link {
-	id: Int!
+	longUrl: String!
 	url: String!
-	hash: String!
 }

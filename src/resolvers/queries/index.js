@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.expandUrl = void 0;
-const models_1 = require("../../models");
-async function expandUrl(_, { hash }) {
-    return await models_1.Link.findOne({ raw: true, where: { hash: url } });
-}
-exports.expandUrl = expandUrl;
+var expandUrl_1 = require("./expandUrl");
+Object.defineProperty(exports, "expandUrl", { enumerable: true, get: function () { return expandUrl_1.expandUrl; } });
 //# sourceMappingURL=index.js.map
