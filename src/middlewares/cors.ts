@@ -1,4 +1,4 @@
-import express = require('express');
+import express = require('express')
 
 export default function middlewareCors(req: express.Request, res: express.Response, next: () => void): void {
 	res.header('Access-Control-Allow-Origin', '*');

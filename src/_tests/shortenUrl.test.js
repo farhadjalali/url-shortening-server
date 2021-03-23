@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,10 +35,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
-test('Starting web server', function () { return __awaiter(_this, void 0, void 0, function () {
+Object.defineProperty(exports, "__esModule", { value: true });
+var request = require("supertest");
+var express = require("express");
+var express_graphql_1 = require("express-graphql");
+var graphql_1 = require("graphql");
+var schema_1 = require("../schema");
+test('createAuthor mutation', function () { return __awaiter(void 0, void 0, void 0, function () {
+    var app, query, response;
     return __generator(this, function (_a) {
-        expect(true).toBeTruthy();
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0:
+                app = express();
+                app.use('/graphql', express_graphql_1.graphqlHTTP({
+                    schema: graphql_1.buildSchema(schema_1.default)
+                }));
+                query = "\n    mutation {\n      shortenUrl(input: {\n        longUrl: \"http://sample.com/address\"\n      }) {\n\t\tlongUrl\n\t\turl\n      }\n    }\n  ";
+                return [4 /*yield*/, request(app)
+                        .post('/graphql')
+                        .type('json')
+                        .send(JSON.stringify({ query: query }))];
+            case 1:
+                response = _a.sent();
+                expect(response.statusCode).toEqual(200);
+                console.log('response', response);
+                return [2 /*return*/];
+        }
     });
 }); });
