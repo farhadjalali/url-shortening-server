@@ -10,6 +10,7 @@ const path_1 = __importDefault(require("path"));
 const moment = require("moment");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+const logPath = process.env.LOGS_PATH || "../logs";
 const custom = {
     levels: {
         error: 0,
@@ -37,13 +38,13 @@ exports.logger = winston.createLogger({
             format: winston.format.combine(winston.format.simple(), winston.format.printf((msg) => winston.format.colorize().colorize(msg.level, `${msg.message}`)))
         }),
         new winston.transports.File({
-            filename: path_1.default.join(process.env.LOGS_PATH, types_1.Constants.ERROR_LOG_FILE),
+            filename: path_1.default.join(logPath, types_1.Constants.ERROR_LOG_FILE),
             // maxsize: mem.sysConfig.log.maxSize,
             level: 'error',
             format: winston.format.printf((info) => `${moment().format('DD-HH:mm:ss.SS')}  ${info.level}\t${info.message}`)
         }),
         new winston.transports.File({
-            filename: path_1.default.join(process.env.LOGS_PATH, types_1.Constants.INFO_LOG_FILE),
+            filename: path_1.default.join(logPath, types_1.Constants.INFO_LOG_FILE),
             // maxsize: mem.sysConfig.log.maxSize,
             level: 'debug',
             format: winston.format.printf((info) => `${moment().format('DD-HH:mm:ss.SS')}  ${info.level}\t${info.message}`)

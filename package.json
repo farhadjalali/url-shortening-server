@@ -5,11 +5,12 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "npm run clean && tsc -p tsconfig.dist.json && npm run copy-files",
-		"start": "tsc -w & nodemon index.js",
+		"start": "tsc -w && nodemon index.js",
 		"clean": "rm -rf dist",
 		"lint": "eslint . --ext .ts --fix",
 		"test": "jest",
-		"copy-files": "cp src/schema/*.graphql dist/src/schema",
+		"docker-build": "npm run build && docker build -t url-shortening .",
+		"copy-files": "cp src/schema/*.graphql dist/src/schema && cp package*.json dist",
 		"migrate": "npx sequelize-cli db:migrate:undo",
 		"migrate:undo": "npx sequelize-cli db:migrate:undo",
 		"seed": "npx sequelize-cli db:seed:all"

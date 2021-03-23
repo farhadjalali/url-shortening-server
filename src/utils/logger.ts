@@ -5,6 +5,7 @@ import moment = require('moment')
 import env from "dotenv"
 
 env.config()
+const logPath = process.env.LOGS_PATH || "../logs"
 
 const custom = {
 	levels: {
@@ -40,7 +41,7 @@ export const logger = winston.createLogger({
 		}),
 		new winston.transports.File(
 			{
-				filename: path.join(process.env.LOGS_PATH, Constants.ERROR_LOG_FILE),
+				filename: path.join(logPath, Constants.ERROR_LOG_FILE),
 				// maxsize: mem.sysConfig.log.maxSize,
 				level: 'error',
 				format: winston.format.printf((info) => `${moment().format('DD-HH:mm:ss.SS')}  ${info.level}\t${info.message}`)
@@ -48,7 +49,7 @@ export const logger = winston.createLogger({
 		),
 		new winston.transports.File(
 			{
-				filename: path.join(process.env.LOGS_PATH, Constants.INFO_LOG_FILE),
+				filename: path.join(logPath, Constants.INFO_LOG_FILE),
 				// maxsize: mem.sysConfig.log.maxSize,
 				level: 'debug',
 				format: winston.format.printf((info) => `${moment().format('DD-HH:mm:ss.SS')}  ${info.level}\t${info.message}`)
