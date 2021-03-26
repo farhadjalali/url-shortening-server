@@ -5,7 +5,7 @@ import typeDefs from "./schema";
 import {app} from './app'
 import {IExpressRequest} from "./types";
 
-export async function start(): Promise<void> {
+async function start(): Promise<void> {
 	console.log(`Starting web service ...`)
 
 	const server = new ApolloServer({
@@ -21,3 +21,8 @@ export async function start(): Promise<void> {
 		logger.info(`Server started on http://127.0.0.1:${process.env.PORT}`)
 	});
 }
+
+start().catch(reason => {
+	console.error(`Starting server failed!`, reason)
+	process.exit(1)
+})
