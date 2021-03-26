@@ -1,13 +1,21 @@
-.eslintrc.json
+# dependencies
 node_modules
+
+# production
 /dist
+
+# testing
 coverage/
-*.map
+
+# IDE
 .idea
 .vscode
 *.suo
-*.ntvs*
-*.njsproj
 *.sln
 *.iml
-*.sw?
+
+# misc
+.local.env
+.eslintrc.json
+*.map
+src/**/*.js
