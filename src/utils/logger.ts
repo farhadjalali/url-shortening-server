@@ -2,9 +2,6 @@ import winston = require('winston')
 import {Constants} from "../types"
 import path from "path"
 import moment = require('moment')
-import env from "dotenv"
-
-env.config()
 const logPath = process.env.LOGS_PATH || "../logs"
 
 const custom = {

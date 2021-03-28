@@ -1,3 +1,6 @@
+import * as env from "dotenv"
+
+env.config()
 import {ApolloServer} from "apollo-server-express"
 import {logger} from "./utils/logger"
 import resolvers from "./resolvers"
@@ -9,7 +12,7 @@ async function start(): Promise<void> {
 	console.log(`Starting web service ...`)
 
 	const server = new ApolloServer({
-		typeDefs: typeDefs,
+		typeDefs,
 		resolvers,
 		playground: true,
 		context: ({req}) => (<IExpressRequest>req).context,
