@@ -17,5 +17,4 @@ coverage/
 # misc
 .local.env
 .eslintrc.json
-*.map
 src/**/*.js

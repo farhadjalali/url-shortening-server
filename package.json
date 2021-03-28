@@ -2,9 +2,9 @@
 	"name": "url-shortening-server",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/index.js",
+	"main": "./dist/index.js",
 	"scripts": {
-		"build": "npm run clean && tsc && npm run copy-files",
+		"build": "tsc -w && npm run copy-files",
 		"start": "npm run build && nodemon -q -w dist dist/index.js",
 		"clean": "rm -rf dist",
 		"lint": "eslint . --ext .ts --fix",
@@ -16,7 +16,7 @@
 		"seed": "npx sequelize-cli db:seed:all"
 	},
 	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"devDependencies": {
 		"@types/jest": "^26.0.21",
 		"@types/node": "^14.14.35",
