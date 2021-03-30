@@ -18,3 +18,4 @@ coverage/
 .local.env
 .eslintrc.json
 src/**/*.js
+.serverless

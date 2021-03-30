@@ -12,7 +12,7 @@ async function start(): Promise<void> {
 	console.log(`Starting web service ...`)
 
 	const server = new ApolloServer({
-		typeDefs,
+		typeDefs: typeDefs,
 		resolvers,
 		playground: true,
 		context: ({req}) => (<IExpressRequest>req).context,

@@ -1,0 +1,38 @@
+app: url-shortening-serverless-app
+
+service: url-shortening-serverless
+
+useDotenv: true
+provider:
+  name: aws
+  runtime: nodejs12.x
+#  stage: dev
+  region: eu-central-1
+  lambdaHashingVersion: 20201221
+
+package:
+  individually: true
+  include:
+    - ./**/*.ts
+    - ./**/*.iml
+    - ./**/*.md
+    - ./**/*.map
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+functions:
+  graphql:
+    handler: dist/lambda.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+          integration: lambda-proxy
+      - http:
+          path: graphql
+          method: get
+          cors: true
+          integration: lambda-proxy
