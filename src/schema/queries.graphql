@@ -1,9 +1,0 @@
-type Query {
-	"""
-	Expanding the url
-	"""
-	expandUrl(
-		"url input param"
-		url: String!
-	): String!
-}

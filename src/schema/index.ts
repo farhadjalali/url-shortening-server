@@ -1,12 +1,24 @@
-import * as fs from "fs"
-import * as path from "path"
+import {gql} from "apollo-server-lambda"
 
-let typeDefs = ""
-
-fs.readdirSync(__dirname).forEach(file => {
-	if (path.extname(file) == ".graphql") {
-		typeDefs += fs.readFileSync(path.join(__dirname, file), "utf8")
+export const typeDefs = gql`
+	type Query {
+		"""
+		Expanding the url
+		"""
+		expandUrl(
+			"url input param"
+			url: String!
+		): String!
 	}
-});
+
+	type Mutation {
+		shortenUrl(longUrl: String!): Link
+	}
+
+	type Link {
+		longUrl: String!
+		url: String!
+	}
+`
 
 export default typeDefs

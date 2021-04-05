@@ -1,3 +1,6 @@
+// Separate 'app' and 'server' base on this best practice:
+// https://github.com/goldbergyoni/nodebestpractices#-14-separate-express-app-and-server
+
 import express = require('express')
 import bodyParser = require('body-parser')
 import middlewareCors from './middlewares/cors'

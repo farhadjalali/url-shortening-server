@@ -1,4 +1,0 @@
-type Link {
-	longUrl: String!
-	url: String!
-}

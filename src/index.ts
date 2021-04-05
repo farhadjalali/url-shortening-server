@@ -1,6 +1,3 @@
-import * as env from "dotenv"
-
-env.config()
 import {ApolloServer} from "apollo-server-express"
 import {logger} from "./utils/logger"
 import resolvers from "./resolvers"

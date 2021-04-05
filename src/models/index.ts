@@ -1,12 +1,11 @@
 import {Sequelize} from "sequelize"
 import {linkFactory} from "./link-model"
 import assert from "assert";
+import config from "../config";
 
 export {ILink} from "./link-model"
 
-assert(process.env.DB_CONNECTION, `Environment variable DB_CONNECTION is expected`)
-
-export const dbConfig = new Sequelize(process.env.DB_CONNECTION, {
+export const dbConfig = new Sequelize(config.database.connection, {
 	pool: {
 		min: 0,
 		max: 5,

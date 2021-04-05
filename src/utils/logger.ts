@@ -2,7 +2,7 @@ import winston = require('winston')
 import {Constants} from "../types"
 import path from "path"
 import moment = require('moment')
-const logPath = process.env.LOGS_PATH || "../logs"
+import config from "../config"
 
 const custom = {
 	levels: {
@@ -38,7 +38,7 @@ export const logger = winston.createLogger({
 		}),
 		new winston.transports.File(
 			{
-				filename: path.join(logPath, Constants.ERROR_LOG_FILE),
+				filename: path.join(config.logPath, Constants.ERROR_LOG_FILE),
 				// maxsize: mem.sysConfig.log.maxSize,
 				level: 'error',
 				format: winston.format.printf((info) => `${moment().format('DD-HH:mm:ss.SS')}  ${info.level}\t${info.message}`)
@@ -46,7 +46,7 @@ export const logger = winston.createLogger({
 		),
 		new winston.transports.File(
 			{
-				filename: path.join(logPath, Constants.INFO_LOG_FILE),
+				filename: path.join(config.logPath, Constants.INFO_LOG_FILE),
 				// maxsize: mem.sysConfig.log.maxSize,
 				level: 'debug',
 				format: winston.format.printf((info) => `${moment().format('DD-HH:mm:ss.SS')}  ${info.level}\t${info.message}`)
